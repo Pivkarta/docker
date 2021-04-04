@@ -1,0 +1,3 @@
+[submodule "prisma-cms/pivkarta.ru"]
+	path = prisma-cms/pivkarta.ru
+	url = https://github.com/Pivkarta/pivkarta.ru.git

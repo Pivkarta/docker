@@ -10,10 +10,15 @@ services:
     ports:
       - '3306:3306'
 
-  front:
+  # front:
+  #   volumes:
+  #     - ./prisma-cms/${SITE:-boilerplate}/src:/www/${SITE:-boilerplate}/src
+  #   command: bash -c "yarn deploy && yarn start"
+
+  pivkarta.ru-2:
     volumes:
-      - ./prisma-cms/${SITE:-boilerplate}/src:/www/${SITE:-boilerplate}/src
-    command: bash -c "yarn deploy && yarn start"
+      - ./prisma-cms/prisma-cms.com--nextjs/src:/www/prisma-cms.com--nextjs/src
+    command: bash -c "yarn dev"
 
   api:
     volumes:

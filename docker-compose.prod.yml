@@ -11,16 +11,26 @@ services:
   pma:
     restart: always
 
-  front:
+  # front:
+  #   restart: always
+  #   environment: 
+  #     ENV_MODE: production
+  #   build:
+  #     args: 
+  #       - PUBLIC_URL=${PUBLIC_URL:-/}
+  #       - ENV_MODE=production
+  #       - endpoint=${prod_endpoint}
+  #   command: yarn start-ssr
+
+  pivkarta.ru-2:
     restart: always
     environment: 
       ENV_MODE: production
     build:
       args: 
-        - PUBLIC_URL=${PUBLIC_URL:-/}
         - ENV_MODE=production
         - endpoint=${prod_endpoint}
-    command: yarn start-ssr
+    command: bash -c "yarn start"
 
   api:
     restart: always

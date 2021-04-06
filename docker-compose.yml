@@ -95,6 +95,7 @@ services:
     build:
       context: ./prisma-cms
       network: ${NETWORK_NAME:-prisma-cms-default}
+      dockerfile: ./pivkarta.ru-2/Dockerfile
       args: 
         - SITE=pivkarta.ru-2
         - ROLE=FRONT
@@ -102,8 +103,8 @@ services:
         - endpoint=${dev_endpoint}
         - API_ENDPOINT=${API_ENDPOINT}
     volumes:
-      - ./prisma-cms/${SITE:-boilerplate}/shared:/www/pivkarta.ru-2/shared
-      - ./prisma-cms/${SITE:-boilerplate}/uploads:/www/pivkarta.ru-2/uploads
+      - ./prisma-cms/pivkarta.ru-2/shared:/www/pivkarta.ru-2/shared
+      - ./prisma-cms/pivkarta.ru-2/uploads:/www/pivkarta.ru-2/uploads
     env_file: 
       - .env
     environment: 

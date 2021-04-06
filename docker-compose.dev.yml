@@ -17,8 +17,18 @@ services:
 
   pivkarta.ru-2:
     volumes:
-      - ./prisma-cms/prisma-cms.com--nextjs/src:/www/prisma-cms.com--nextjs/src
+      - ./prisma-cms/pivkarta.ru-2/.storybook:/www/pivkarta.ru-2/.storybook
+      - ./prisma-cms/pivkarta.ru-2/cypress:/www/pivkarta.ru-2/cypress
+      - ./prisma-cms/pivkarta.ru-2/e2e:/www/pivkarta.ru-2/e2e
+      - ./prisma-cms/pivkarta.ru-2/pages:/www/pivkarta.ru-2/pages
+      - ./prisma-cms/pivkarta.ru-2/src:/www/pivkarta.ru-2/src
+      - ./prisma-cms/pivkarta.ru-2/public:/www/pivkarta.ru-2/public
+      - ./prisma-cms/pivkarta.ru-2/stories:/www/pivkarta.ru-2/stories
+      - ./prisma-cms/pivkarta.ru-2/server:/www/pivkarta.ru-2/server
+      - ./prisma-cms/pivkarta.ru-2/package.json:/www/pivkarta.ru-2/package.json
     command: bash -c "yarn dev"
+    ports:
+      - '3100:3000'
 
   api:
     volumes:

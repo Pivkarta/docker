@@ -1,6 +1,7 @@
 [submodule "prisma-cms/pivkarta.ru"]
 	path = prisma-cms/pivkarta.ru
 	url = https://github.com/Pivkarta/pivkarta.ru.git
+	branch = docker
 [submodule "prisma-cms/pivkarta.ru-2"]
 	path = prisma-cms/pivkarta.ru-2
 	url = https://github.com/Pivkarta/pivkarta.ru-2

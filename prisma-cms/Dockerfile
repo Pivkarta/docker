@@ -25,6 +25,9 @@ RUN apk add git
 # RUN apk add --upgrade --no-cache vips-dev build-base \
 #   --repository https://alpine.global.ssl.fastly.net/alpine/v3.10/community/
 
+WORKDIR /tmp/build/
+RUN npm i sharp@0.21.0
+
 WORKDIR /www/${SITE}/
 
 COPY ./${SITE} .
@@ -32,6 +35,13 @@ COPY ./bin/* /usr/bin/
 
 # Установку зависимостей нельзя переносить в entrypoint,
 # потому что тот скрипт срабатывает уже тогда, когда контейнер создан и заменен имеющийся (если уже был запущен)
-RUN yarn install --ignore-engines
+# RUN yarn install --ignore-engines
+COPY ./data/node_modules.tar.gz .
+RUN tar -xzf node_modules.tar.gz
+RUN rm node_modules.tar.gz
+RUN rm ./node_modules/sharp -rf
 
-RUN if [ "$ROLE" = "FRONT" ] ; then echo Build front ; /usr/bin/front.sh ; else echo ROLE is $ROLE ; /usr/bin/deploy-api-schema.sh ; fi
+RUN mv /tmp/build/node_modules/sharp ./node_modules
+
+# RUN if [ "$ROLE" = "FRONT" ] ; then echo Build front ; /usr/bin/front.sh ; else echo ROLE is $ROLE ; /usr/bin/deploy-api-schema.sh ; fi
+RUN if [ "$ROLE" = "FRONT" ] ; then echo Build front ; /usr/bin/front.sh ; else echo ROLE is $ROLE ; fi
